@@ -16,7 +16,12 @@ function init(models: any) {
 
     console.log(user, data);
 
-    user.password = await password.encrypt(data.password);
+    try{
+      user.password = await password.encrypt(data.password);
+    }catch(err){
+      throw Error('Make sure you have provided a valid password.');
+    }
+
     user.avatar = `https://${s3.BUCKET}.s3.amazonaws.com/${data.username}`;
 
     const createdUser = await models.User.save(user);
