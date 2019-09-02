@@ -1,15 +1,15 @@
 import {Request, Response} from 'express';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import Models from './models';
+import Entities from './entities';
 import Libs from './libs';
 
 const app = express();
 app.use(bodyParser.json());
 
-Models.init().then(async (models) => {
+Entities.init().then(async (entities) => {
 
-  const libs = Libs.init(models);
+  const libs = Libs.init(entities);
   console.log
 
   // Following routes can further be separated or made into a configuration style Keeping it like that because its just one lib

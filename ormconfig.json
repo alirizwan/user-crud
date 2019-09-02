@@ -6,6 +6,6 @@
     "password": "usercrud123",
     "database": "postgres",
     "synchronize": true,
-    "entities": ["dist/models/*.js"],
+    "entities": ["dist/entities/*.js"],
     "logging": true
   }
