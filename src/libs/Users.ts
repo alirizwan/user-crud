@@ -6,9 +6,9 @@ function init(models: any) {
   const select = ['id', 'firstName', 'lastName', 'username', 'avatar', 'createdAt', 'updatedAt'];
 
   const create = async (data: any) => {
-    const existingUser = models.User.findOne({where: {username: data.username}});
+    const existingUser = await get({username: data.username});
 
-    if (!existingUser) {
+    if (existingUser.length) {
       throw Error('Another user with similar username already exist.');
     }
 
@@ -19,9 +19,11 @@ function init(models: any) {
     user.password = await password.encrypt(data.password);
     user.avatar = `https://${s3.BUCKET}.s3.amazonaws.com/${data.username}`;
 
-    const createdUser = models.User.save(user);
+    const createdUser = await models.User.save(user);
+
+    console.log(createdUser);
     
-    return createdUser;
+    return get({id: createdUser.id});
   };
 
   const update = async (id: string, data: any) => {
