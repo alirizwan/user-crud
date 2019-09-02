@@ -1,0 +1,40 @@
+{
+  "name": "user-crud",
+  "version": "1.0.0",
+  "description": "User CRUD",
+  "author": "Ali Rizwan <ali.aruz@outlook.com>",
+  "scripts": {
+    "build": "tsc --outDir dist",
+    "buildAndStart": "npm run build && npm start",
+    "start": "node dist/index.js",
+    "buildImage": "docker-compose build",
+    "deploy": "docker-compose up",
+    "buildAndDeploy": "npm run build && npm run buildImage && npm run deploy",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.1",
+    "aws-sdk": "^2.521.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "class-validator": "^0.10.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "typeorm": "^0.2.18"
+  },
+  "devDependencies": {
+    "typescript": "3.1.6",
+    "eslint": "^5.9.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^7.3.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}

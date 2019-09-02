@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "3000:3000"
+    environment:
+      SALT_ROUNDS: 10
+      AWS_ACCESS_KEY_ID: <AWS_KEY_HERE>
+      AWS_SECRET_ACCESS_KEY: <AWS_SECRET_HERE>
+  db:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: usercrud123

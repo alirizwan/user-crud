@@ -1,0 +1,7 @@
+.serverless/*
+.serverless_plugins/*
+certs/*
+config/*
+docs/
+coverage
+node_modules/
